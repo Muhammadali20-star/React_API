@@ -31,7 +31,7 @@ const Users = () => {
   }
   
   return (
-    <div className='mb-10'>
+    <div className='mb-20'>
       <h2 className='text-center text-4xl mb-8'>Users</h2>
       <div className='container mx-auto grid lg:grid-cols-4 md:grid-cols-2  gap-6'>
         {
