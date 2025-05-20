@@ -16,4 +16,4 @@ const Skeleton = ({count}) => {
   )
 }
 
-export default Skeleton
+export default React.memo(Skeleton)

@@ -1,10 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Skeleton from '../skeleton/Skeleton'
 
 const Cards = () => {
     const [info, setInfo] = useState(null)
+      const [loading, setLoading] = useState(false)
+    
 
     useEffect(()=> {
+        setLoading(true)
         axios
       .get("https://dummyjson.com/products")
       .then(res => {
@@ -13,11 +17,14 @@ const Cards = () => {
       .catch((err) => {
         console.log(err);
       })
-      .finally()
+      .finally(()=> setLoading(false))
     }, [])
     
   return (
-    <div className='container mx-auto grid lg:grid-cols-5 md:grid-cols-2  gap-4 mb-15'>
+    <div>
+        <h2 className='text-center text-4xl mb-8'>products</h2>
+        {loading && <Skeleton count={10}/>}
+        <div className='container mx-auto grid lg:grid-cols-4 md:grid-cols-2  gap-4 mb-15'>
         {
             info?.products.slice(0,10)?.map((product)=> (
                 <div key={product.id} className='flex flex-col gap-1'>
@@ -31,7 +38,9 @@ const Cards = () => {
             ))
         }
     </div>
+    
+    </div>
   )
 }
 
-export default Cards
+export default React.memo(Cards)
