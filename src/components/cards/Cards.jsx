@@ -10,7 +10,7 @@ const Cards = () => {
     useEffect(()=> {
         setLoading(true)
         axios
-      .get("https://dummyjson.com/products")
+      .get("https://dummyjson.com/products?limit=10")
       .then(res => {
         setInfo(res.data)
       })
@@ -26,7 +26,7 @@ const Cards = () => {
         {loading && <Skeleton count={10}/>}
         <div className='container mx-auto grid lg:grid-cols-4 md:grid-cols-2  gap-4 mb-15'>
         {
-            info?.products.slice(0,10)?.map((product)=> (
+            info?.products?.map((product)=> (
                 <div key={product.id} className='flex flex-col gap-1'>
                    <img className='bg-gray-200' src={product.thumbnail} alt={product.title} />
                    <h3 className='p-2'>{product.title}</h3>
