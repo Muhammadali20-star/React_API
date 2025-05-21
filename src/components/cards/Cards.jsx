@@ -28,7 +28,7 @@ const Cards = () => {
         {
             info?.products?.map((product)=> (
                 <div key={product.id} className='flex flex-col gap-1'>
-                   <img className='bg-gray-200' src={product.thumbnail} alt={product.title} />
+                   <img loading='lazy' className='bg-gray-200' src={product.thumbnail} alt={product.title} />
                    <h3 className='p-2'>{product.title}</h3>
                    <p className='p-2'><span className="text-yellow-200">★</span> 5.0 (4 sharsh)</p>
                    <h3 className='bg-yellow-200 w-[135px] flex no-wrap text-[14px] p-2'>{product.price} som/oyoga</h3>
