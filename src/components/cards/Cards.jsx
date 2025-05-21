@@ -4,11 +4,11 @@ import Skeleton from '../skeleton/Skeleton'
 
 const Cards = () => {
     const [info, setInfo] = useState(null)
-      const [loading, setLoading] = useState(false)
+      const [onLoading, setonLoading] = useState(false)
     
 
     useEffect(()=> {
-        setLoading(true)
+        setonLoading(true)
         axios
       .get("https://dummyjson.com/products?limit=10")
       .then(res => {
@@ -17,13 +17,13 @@ const Cards = () => {
       .catch((err) => {
         console.log(err);
       })
-      .finally(()=> setLoading(false))
+      .finally(()=> setonLoading(false))
     }, [])
     
   return (
     <div>
         <h2 className='text-center text-4xl mb-8'>products</h2>
-        {loading && <Skeleton count={10}/>}
+        {onLoading && <Skeleton count={10}/>}
         <div className='container mx-auto grid lg:grid-cols-4 md:grid-cols-2  gap-4 mb-15'>
         {
             info?.products?.map((product)=> (
